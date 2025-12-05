@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
+import React, 'react';
+import { useState, useEffect } from 'react';
 import BottomNav from './components/BottomNav.tsx';
 import Dashboard from './views/Dashboard.tsx';
 import About from './views/About.tsx';
@@ -11,10 +12,36 @@ import Finance from './views/Finance.tsx';
 import Achievements from './views/Achievements.tsx';
 import type { View } from './types.ts';
 import { ANNOUNCEMENTS_DATA, EXAM_DATA } from './constants.ts';
+import InstallPwaButton from './components/InstallPwaButton.tsx';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('dashboard');
+  const [installPrompt, setInstallPrompt] = useState<any>(null);
 
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setInstallPrompt(e);
+      console.log(`'beforeinstallprompt' event has been fired.`);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!installPrompt) {
+      return;
+    }
+    installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice;
+    console.log(`User response to the install prompt: ${outcome}`);
+    setInstallPrompt(null);
+  };
+  
   useEffect(() => {
     const showNotification = (title: string, body: string, id: string) => {
       const notificationKey = `notification_shown_${id}`;
@@ -101,6 +128,7 @@ const App: React.FC = () => {
           {renderView()}
         </main>
       </div>
+      {installPrompt && <InstallPwaButton onClick={handleInstallClick} />}
     </div>
   );
 };
