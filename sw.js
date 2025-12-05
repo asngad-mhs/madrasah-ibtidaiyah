@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'mi-ceria-app-v4'; // Bump version to ensure update
+const CACHE_NAME = 'mi-ceria-app-v5'; // Bump version to ensure update
 const urlsToCache = [
     '/',
     '/index.html',

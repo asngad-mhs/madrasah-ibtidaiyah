@@ -17,14 +17,21 @@ import InstallPwaButton from './components/InstallPwaButton.tsx';
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('dashboard');
   const [installPrompt, setInstallPrompt] = useState<any>(null);
+  const [sharedText, setSharedText] = useState<string | null>(null);
 
-  // Handle deep linking from URL parameters on initial load
+  // Handle deep linking and share target from URL parameters on initial load
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const view = params.get('view') as View;
+    const text = params.get('text'); // For share_target
+    
     const validViews: View[] = ['dashboard', 'homework', 'grades', 'profile', 'ai_tutor', 'about', 'finance', 'achievements'];
     if (view && validViews.includes(view)) {
       setCurrentView(view);
+      // If the view is ai_tutor and there's shared text, set it
+      if (view === 'ai_tutor' && text) {
+        setSharedText(text);
+      }
     }
   }, []);
 
@@ -120,7 +127,7 @@ const App: React.FC = () => {
       case 'profile':
         return <Profile setCurrentView={setCurrentView} />;
       case 'ai_tutor':
-        return <AiTutor />;
+        return <AiTutor initialText={sharedText} />;
        case 'about':
         return <About />;
        case 'achievements':

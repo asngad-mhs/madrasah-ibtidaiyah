@@ -9,7 +9,11 @@ interface Message {
   text: string;
 }
 
-const AiTutor: React.FC = () => {
+interface AiTutorProps {
+  initialText?: string | null;
+}
+
+const AiTutor: React.FC<AiTutorProps> = ({ initialText }) => {
   const [messages, setMessages] = useState<Message[]>([
     { sender: 'ai', text: "Assalamualaikum! Ada yang bisa Ustadz AI bantu? Silakan bertanya tentang pelajaran atau apa saja yang ingin kamu ketahui." }
   ]);
@@ -17,6 +21,12 @@ const AiTutor: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (initialText) {
+      setInput(initialText);
+    }
+  }, [initialText]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -99,9 +109,10 @@ const AiTutor: React.FC = () => {
           onClick={handleSend}
           disabled={isLoading}
           className="ml-3 bg-teal-500 text-white p-3 rounded-full hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-700 disabled:bg-teal-300 dark:disabled:bg-teal-400 transition-colors shadow-md"
+          aria-label="Kirim Pesan"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
           </svg>
         </button>
       </div>
