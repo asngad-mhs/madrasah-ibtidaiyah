@@ -1,0 +1,82 @@
+
+{
+  "short_name": "MI Ceria",
+  "name": "Aplikasi Madrasah Ibtidaiyah Ceria",
+  "description": "Aplikasi komprehensif untuk siswa dan orang tua di Madrasah Ibtidaiyah (MI), menyediakan akses ke jadwal pelajaran, nilai, absensi, pengumuman, dan fitur 'Tanya Ustadz AI'.",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "scope": "/",
+  "theme_color": "#14b8a6",
+  "background_color": "#f1f5f9",
+  "categories": [
+    "education",
+    "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "Lihat Tugas",
+      "short_name": "Tugas",
+      "description": "Cek daftar tugas dan PR yang harus dikerjakan.",
+      "url": "/?view=homework"
+    },
+    {
+      "name": "Tanya Ustadz AI",
+      "short_name": "Tanya AI",
+      "description": "Ajukan pertanyaan tentang pelajaran kepada Ustadz AI.",
+      "url": "/?view=ai_tutor"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-dashboard.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tampilan Beranda Utama"
+    },
+    {
+      "src": "/assets/screenshot-aitutor.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Fitur Tanya Ustadz AI"
+    }
+  ],
+  "share_target": {
+    "action": "/?view=ai_tutor",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}
