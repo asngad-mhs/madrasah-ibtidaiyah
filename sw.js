@@ -1,9 +1,9 @@
 
 const CACHE_NAME = 'mi-ceria-app-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/icon.svg'
+    './',
+    './index.html',
+    './icon.svg'
 ];
 
 // Install the service worker and cache static assets
