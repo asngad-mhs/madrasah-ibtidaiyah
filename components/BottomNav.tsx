@@ -46,19 +46,21 @@ const TopNav: React.FC<TopNavProps> = ({ currentView, setCurrentView }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 max-w-lg mx-auto bg-white dark:bg-gray-800 dark:border-b dark:border-gray-700 shadow-md rounded-b-2xl z-10">
-      <nav className="flex justify-around items-center h-16">
-        {navItems.map((item) => (
-          <NavItem
-            key={item.view}
-            label={item.label}
-            view={item.view as View}
-            icon={item.icon}
-            isActive={currentView === item.view}
-            onClick={() => setCurrentView(item.view as View)}
-          />
-        ))}
-      </nav>
+    <header className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 dark:border-b dark:border-gray-700 shadow-md z-10">
+      <div className="max-w-4xl mx-auto">
+        <nav className="flex justify-around items-center h-16">
+          {navItems.map((item) => (
+            <NavItem
+              key={item.view}
+              label={item.label}
+              view={item.view as View}
+              icon={item.icon}
+              isActive={currentView === item.view}
+              onClick={() => setCurrentView(item.view as View)}
+            />
+          ))}
+        </nav>
+      </div>
     </header>
   );
 };

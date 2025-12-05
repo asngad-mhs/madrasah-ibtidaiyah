@@ -94,8 +94,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen antialiased">
-      <div className="container mx-auto max-w-lg h-screen flex flex-col">
+    <div className="min-h-screen antialiased bg-white dark:bg-gray-800 shadow-lg sm:max-w-4xl sm:mx-auto">
+      <div className="w-full h-screen flex flex-col">
         <BottomNav currentView={currentView} setCurrentView={setCurrentView} />
         <main className="flex-1 overflow-y-auto pt-20 pb-4">
           {renderView()}
