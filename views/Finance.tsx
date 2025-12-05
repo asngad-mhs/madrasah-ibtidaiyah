@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo } from 'react';
-import { FINANCE_DATA } from '../constants';
-import type { Bill } from '../types';
-import { PaymentStatus } from '../types';
+import { FINANCE_DATA } from '../constants.ts';
+import type { Bill } from '../types.ts';
+import { PaymentStatus } from '../types.ts';
 import { CreditCardIcon, CalendarDaysIcon } from '@heroicons/react/24/solid';
 
 const Finance: React.FC = () => {

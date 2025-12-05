@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo } from 'react';
-import { HOMEWORK_DATA } from '../constants';
-import type { Homework } from '../types';
-import { HomeworkStatus } from '../types';
+import { HOMEWORK_DATA } from '../constants.ts';
+import type { Homework } from '../types.ts';
+import { HomeworkStatus } from '../types.ts';
 import { ClipboardDocumentListIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 
 const getSubjectColor = (subject: string): string => {

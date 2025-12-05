@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import BottomNav from './components/BottomNav';
-import Dashboard from './views/Dashboard';
-import About from './views/About';
-import Grades from './views/Grades';
-import Profile from './views/Profile';
-import AiTutor from './views/AiTutor';
-import Homework from './views/Homework';
-import Finance from './views/Finance';
-import Achievements from './views/Achievements';
-import type { View } from './types';
-import { ANNOUNCEMENTS_DATA, EXAM_DATA } from './constants';
+import BottomNav from './components/BottomNav.tsx';
+import Dashboard from './views/Dashboard.tsx';
+import About from './views/About.tsx';
+import Grades from './views/Grades.tsx';
+import Profile from './views/Profile.tsx';
+import AiTutor from './views/AiTutor.tsx';
+import Homework from './views/Homework.tsx';
+import Finance from './views/Finance.tsx';
+import Achievements from './views/Achievements.tsx';
+import type { View } from './types.ts';
+import { ANNOUNCEMENTS_DATA, EXAM_DATA } from './constants.ts';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('dashboard');
@@ -22,7 +22,7 @@ const App: React.FC = () => {
         return; // Already shown
       }
 
-      new Notification(title, { body, icon: '/icon.svg' });
+      new Notification(title, { body: '/icon.svg' });
       localStorage.setItem(notificationKey, 'true');
     };
 

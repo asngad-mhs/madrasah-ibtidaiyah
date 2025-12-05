@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { GRADES_DATA } from '../constants';
+import { GRADES_DATA } from '../constants.ts';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const CustomTooltip = ({ active, payload, label }: any) => {

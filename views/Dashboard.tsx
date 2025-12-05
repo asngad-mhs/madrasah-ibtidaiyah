@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { STUDENT_DATA, ANNOUNCEMENTS_DATA, SCHEDULE_DATA, ATTENDANCE_DATA, EXAM_DATA } from '../constants';
+import { STUDENT_DATA, ANNOUNCEMENTS_DATA, SCHEDULE_DATA, ATTENDANCE_DATA, EXAM_DATA } from '../constants.ts';
 import { CalendarIcon, BellIcon, AcademicCapIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
-import { AttendanceStatus, View } from '../types';
-import SparklesIcon from '../components/icons/SparklesIcon';
-import InformationIcon from '../components/icons/InformationIcon';
+import { AttendanceStatus, View } from '../types.ts';
+import SparklesIcon from '../components/icons/SparklesIcon.tsx';
+import InformationIcon from '../components/icons/InformationIcon.tsx';
 
 interface DashboardProps {
     setCurrentView: (view: View) => void;

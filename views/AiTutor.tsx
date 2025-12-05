@@ -1,8 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { askAiTutor } from '../services/geminiService';
-import MoonIcon from '../components/icons/MoonIcon';
-import SunIcon from '../components/icons/SunIcon';
+import { askAiTutor } from '../services/geminiService.ts';
+import MoonIcon from '../components/icons/MoonIcon.tsx';
+import SunIcon from '../components/icons/SunIcon.tsx';
 
 interface Message {
   sender: 'user' | 'ai';

@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { FULL_SCHEDULE_DATA, ANNOUNCEMENTS_DATA } from '../constants';
+import { FULL_SCHEDULE_DATA, ANNOUNCEMENTS_DATA } from '../constants.ts';
 import { CalendarDaysIcon, MegaphoneIcon, ClipboardDocumentListIcon, AcademicCapIcon, ChevronDownIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
-import Timetable from '../components/Timetable';
-import RegistrationForm from '../components/RegistrationForm';
+import Timetable from '../components/Timetable.tsx';
+import RegistrationForm from '../components/RegistrationForm.tsx';
 
 const About: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);

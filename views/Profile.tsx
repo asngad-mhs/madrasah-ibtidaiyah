@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
-import { STUDENT_DATA, ATTENDANCE_DATA, ACHIEVEMENT_DATA, CHARACTER_BADGE_DATA } from '../constants';
-import { AttendanceStatus, View } from '../types';
-import FeedbackModal from '../components/FeedbackModal';
-import ChatBubbleLeftRightIcon from '../components/icons/ChatBubbleLeftRightIcon';
-import TrophyIcon from '../components/icons/TrophyIcon';
+import { STUDENT_DATA, ATTENDANCE_DATA, ACHIEVEMENT_DATA, CHARACTER_BADGE_DATA } from '../constants.ts';
+import { AttendanceStatus, View } from '../types.ts';
+import FeedbackModal from '../components/FeedbackModal.tsx';
+import ChatBubbleLeftRightIcon from '../components/icons/ChatBubbleLeftRightIcon.tsx';
+import TrophyIcon from '../components/icons/TrophyIcon.tsx';
 
 
 interface ProfileProps {

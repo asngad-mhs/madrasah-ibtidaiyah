@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { SCHEDULE_DATA } from '../constants';
-import type { DaySchedule } from '../types';
+import { SCHEDULE_DATA } from '../constants.ts';
+import type { DaySchedule } from '../types.ts';
 
 const Schedule: React.FC = () => {
   const [activeDay, setActiveDay] = useState<string>(

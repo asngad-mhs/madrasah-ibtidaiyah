@@ -1,6 +1,6 @@
 
-import type { Student, DaySchedule, Grade, Announcement, AttendanceRecord, Exam, Homework, Bill, Achievement, CharacterBadge } from './types';
-import { AttendanceStatus, HomeworkStatus, PaymentStatus, AchievementCategory } from './types';
+import type { Student, DaySchedule, Grade, Announcement, AttendanceRecord, Exam, Homework, Bill, Achievement, CharacterBadge } from './types.ts';
+import { AttendanceStatus, HomeworkStatus, PaymentStatus, AchievementCategory } from './types.ts';
 
 export const STUDENT_DATA: Student = {
   name: "Mohammad Asngad",

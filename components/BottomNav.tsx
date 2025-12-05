@@ -1,12 +1,12 @@
 
 import React from 'react';
-import type { View } from '../types';
-import HomeIcon from './icons/HomeIcon';
-import HomeworkIcon from './icons/HomeworkIcon';
-import GradesIcon from './icons/GradesIcon';
-import ProfileIcon from './icons/ProfileIcon';
-import FinanceIcon from './icons/FinanceIcon';
-import AiTutorIcon from './icons/AiTutorIcon';
+import type { View } from '../types.ts';
+import HomeIcon from './icons/HomeIcon.tsx';
+import HomeworkIcon from './icons/HomeworkIcon.tsx';
+import GradesIcon from './icons/GradesIcon.tsx';
+import ProfileIcon from './icons/ProfileIcon.tsx';
+import FinanceIcon from './icons/FinanceIcon.tsx';
+import AiTutorIcon from './icons/AiTutorIcon.tsx';
 
 interface TopNavProps {
   currentView: View;

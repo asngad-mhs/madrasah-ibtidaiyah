@@ -1,5 +1,6 @@
+
 import React from 'react';
-import type { DaySchedule, ScheduleItem } from '../types';
+import type { DaySchedule, ScheduleItem } from '../types.ts';
 
 interface TimetableProps {
   scheduleData: DaySchedule[];
