@@ -5,30 +5,30 @@
   "description": "Aplikasi komprehensif untuk siswa dan orang tua di Madrasah Ibtidaiyah (MI), menyediakan akses ke jadwal pelajaran, nilai, absensi, pengumuman, dan fitur 'Tanya Ustadz AI'.",
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "/assets/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     },
     {
-      "src": "/icon-192.png",
+      "src": "/assets/icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/assets/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/assets/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#14b8a6",
@@ -53,14 +53,14 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot-dashboard.png",
+      "src": "/assets/screenshot-dashboard.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Tampilan Beranda Utama"
     },
     {
-      "src": "/screenshot-aitutor.png",
+      "src": "/assets/screenshot-aitutor.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
