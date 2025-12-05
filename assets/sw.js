@@ -1,8 +1,9 @@
 
-const CACHE_NAME = 'mi-ceria-app-v6'; // Bump version to ensure update
+const CACHE_NAME = 'mi-ceria-app-v7'; // Bump version to ensure update
 const urlsToCache = [
     '/',
     '/index.html',
+    '/index.tsx', // Cache the main consolidated app script
     '/assets/icon.svg',
     '/assets/manifest.json',
     '/assets/icon-192.png',
