@@ -1,0 +1,18 @@
+
+{
+  "short_name": "MI Ceria",
+  "name": "Aplikasi Madrasah Ibtidaiyah Ceria",
+  "description": "Aplikasi komprehensif untuk siswa dan orang tua di Madrasah Ibtidaiyah (MI), menyediakan akses ke jadwal pelajaran, nilai, absensi, pengumuman, dan fitur 'Tanya Ustadz AI'.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#14b8a6",
+  "background_color": "#f1f5f9"
+}

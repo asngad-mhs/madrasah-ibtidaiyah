@@ -1,0 +1,5 @@
+{
+  "name": "Aplikasi Madrasah Ibtidaiyah",
+  "description": "Aplikasi komprehensif untuk siswa dan orang tua di Madrasah Ibtidaiyah (MI), menyediakan akses ke jadwal pelajaran, nilai, absensi, pengumuman, dan fitur 'Tanya Ustadz AI' yang didukung oleh Gemini.",
+  "requestFramePermissions": []
+}
