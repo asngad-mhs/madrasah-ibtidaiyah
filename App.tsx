@@ -22,7 +22,8 @@ const App: React.FC = () => {
         return; // Already shown
       }
 
-      new Notification(title, { body: '/icon.svg' });
+      // FIX: Correctly assign body and icon properties
+      new Notification(title, { body: body, icon: '/icon.svg' });
       localStorage.setItem(notificationKey, 'true');
     };
 
