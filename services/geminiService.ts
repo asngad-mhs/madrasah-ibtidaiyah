@@ -1,20 +1,19 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-  // In a real app, you'd want to handle this more gracefully.
-  // For this example, we'll throw an error if the key is missing.
-  console.warn("API key is missing. AI Tutor functionality will not work. Please set the API_KEY environment variable.");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
-
 export const askAiTutor = async (prompt: string): Promise<string> => {
+  // Safely access the API key inside the function to prevent app crash on load.
+  // This makes the app resilient if the environment variable is not set.
+  const API_KEY = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : undefined;
+
   if (!API_KEY) {
-    return "Maaf, fitur AI sedang tidak tersedia. Kunci API tidak ditemukan.";
+    console.warn("API key is missing. AI Tutor functionality will not work. Please set the API_KEY environment variable.");
+    return "Maaf, fitur AI sedang tidak tersedia karena masalah konfigurasi. Kunci API tidak ditemukan.";
   }
+
+  // Initialize the GoogleGenAI client only when the function is called.
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
