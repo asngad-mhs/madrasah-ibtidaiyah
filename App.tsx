@@ -1,5 +1,5 @@
 
-import React, 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import BottomNav from './components/BottomNav.tsx';
 import Dashboard from './views/Dashboard.tsx';
@@ -17,6 +17,16 @@ import InstallPwaButton from './components/InstallPwaButton.tsx';
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('dashboard');
   const [installPrompt, setInstallPrompt] = useState<any>(null);
+
+  // Handle deep linking from URL parameters on initial load
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view') as View;
+    const validViews: View[] = ['dashboard', 'homework', 'grades', 'profile', 'ai_tutor', 'about', 'finance', 'achievements'];
+    if (view && validViews.includes(view)) {
+      setCurrentView(view);
+    }
+  }, []);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
