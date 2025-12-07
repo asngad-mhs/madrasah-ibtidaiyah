@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { STUDENT_DATA, ACHIEVEMENT_DATA, CHARACTER_BADGE_DATA } from '../constants.ts';
 import { AchievementCategory, View } from '../types.ts';
-import { ArrowLeftIcon, StarIcon, LightBulbIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 
 interface AchievementsProps {
     setCurrentView: (view: View) => void;

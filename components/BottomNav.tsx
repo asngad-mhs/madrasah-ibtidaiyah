@@ -8,7 +8,7 @@ import ProfileIcon from './icons/ProfileIcon.tsx';
 import FinanceIcon from './icons/FinanceIcon.tsx';
 import AiTutorIcon from './icons/AiTutorIcon.tsx';
 
-interface TopNavProps {
+interface BottomNavProps {
   currentView: View;
   setCurrentView: (view: View) => void;
 }
@@ -35,7 +35,7 @@ const NavItem: React.FC<{
   );
 };
 
-const TopNav: React.FC<TopNavProps> = ({ currentView, setCurrentView }) => {
+const BottomNav: React.FC<BottomNavProps> = ({ currentView, setCurrentView }) => {
   const navItems = [
     { label: 'Beranda', view: 'dashboard', icon: <HomeIcon /> },
     { label: 'Tugas', view: 'homework', icon: <HomeworkIcon /> },
@@ -65,4 +65,4 @@ const TopNav: React.FC<TopNavProps> = ({ currentView, setCurrentView }) => {
   );
 };
 
-export default TopNav;
+export default BottomNav;

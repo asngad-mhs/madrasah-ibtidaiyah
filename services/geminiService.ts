@@ -2,8 +2,6 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const askAiTutor = async (prompt: string): Promise<string> => {
-  // Safely access the API key inside the function to prevent app crash on load.
-  // This makes the app resilient if the environment variable is not set.
   const API_KEY = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : undefined;
 
   if (!API_KEY) {
@@ -11,7 +9,6 @@ export const askAiTutor = async (prompt: string): Promise<string> => {
     return "Maaf, fitur AI sedang tidak tersedia karena masalah konfigurasi. Kunci API tidak ditemukan.";
   }
 
-  // Initialize the GoogleGenAI client only when the function is called.
   const ai = new GoogleGenAI({ apiKey: API_KEY });
 
   try {

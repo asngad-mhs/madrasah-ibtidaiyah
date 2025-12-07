@@ -12,7 +12,7 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({ setCurrentView }) => {
-    const [currentDate, setCurrentDate] = useState(new Date(2024, 10, 1)); // November 2024
+    const [currentDate] = useState(new Date(2024, 10, 1)); // November 2024
     const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
     const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();

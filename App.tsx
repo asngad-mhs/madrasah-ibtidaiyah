@@ -66,7 +66,6 @@ const App: React.FC = () => {
         return; // Already shown
       }
 
-      // FIX: Correctly assign body and icon properties
       new Notification(title, { body: body, icon: '/assets/icon.svg' });
       localStorage.setItem(notificationKey, 'true');
     };
@@ -138,8 +137,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen antialiased bg-white dark:bg-gray-800 shadow-lg sm:max-w-4xl sm:mx-auto">
-      <div className="w-full h-screen flex flex-col">
+    <div className="min-h-screen antialiased bg-gray-100 dark:bg-gray-900 sm:max-w-4xl sm:mx-auto">
+      <div className="w-full min-h-screen flex flex-col bg-white dark:bg-gray-800 shadow-lg">
         <BottomNav currentView={currentView} setCurrentView={setCurrentView} />
         <main className="flex-1 overflow-y-auto pt-20 pb-4">
           {renderView()}
