@@ -33,8 +33,8 @@ const Timetable: React.FC<TimetableProps> = ({ scheduleData }) => {
     const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at"];
     
     const allTimes = scheduleData.flatMap(day => day.schedule.map(item => item.time));
-    // FIX: Explicitly type `uniqueTimes` as `string[]` to ensure correct type inference for sort callback parameters.
-    const uniqueTimes: string[] = [...new Set(allTimes)].sort((a, b) => {
+    // FIX: Explicitly provide the generic type to `new Set<string>()` to resolve an inference issue where it was being incorrectly typed as `unknown[]`.
+    const uniqueTimes: string[] = [...new Set<string>(allTimes)].sort((a, b) => {
         const timeA = parseInt(a.split(':')[0], 10) * 60 + parseInt(a.split(/[:\s-]/)[1], 10);
         const timeB = parseInt(b.split(':')[0], 10) * 60 + parseInt(b.split(/[:\s-]/)[1], 10);
         return timeA - timeB;

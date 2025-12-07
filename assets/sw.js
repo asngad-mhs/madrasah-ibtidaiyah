@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'mi-ceria-app-v8'; // Bump version to ensure update
+const CACHE_NAME = 'mi-ceria-app-v9'; // Bump version to force update
 const urlsToCache = [
     '/',
     '/index.html',
@@ -11,9 +11,9 @@ const urlsToCache = [
     '/assets/apple-touch-icon.png'
 ];
 
-// Install the service worker and cache static assets
+// Install the service worker, cache static assets, and activate immediately.
 self.addEventListener('install', (event) => {
-    self.skipWaiting(); // Force the new service worker to activate immediately
+    self.skipWaiting(); 
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Opened cache and caching static assets');
@@ -22,44 +22,48 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Serve cached content when offline with a cache-first strategy
+// Use a "Network falling back to cache" strategy.
 self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (event.request.method !== 'GET') {
         return;
     }
     
-    // Do not cache API requests to Google
+    // Do not cache API requests to Google, always fetch from network.
     if (event.request.url.includes('generativelanguage')) {
-        // Fallback to network for API calls
         return fetch(event.request);
     }
 
     event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-            // If we have a cached response, return it.
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-
-            // Otherwise, fetch from the network.
-            return fetch(event.request).then((networkResponse) => {
-                // We don't cache on the fly for this strategy to keep it simple
-                return networkResponse;
-            }).catch(() => {
-                // If the network request fails and it's a navigation request,
-                // return the main index.html page from the cache.
-                if (event.request.mode === 'navigate') {
-                    return caches.match('/index.html');
+        // 1. Try to fetch from the network first.
+        fetch(event.request)
+            .then((networkResponse) => {
+                // If the network request is successful, update the cache with the new version.
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseToCache = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
                 }
-                return;
-            });
-        })
+                return networkResponse;
+            })
+            .catch(() => {
+                // 2. If the network fails (e.g., offline), serve from the cache.
+                return caches.match(event.request).then((cachedResponse) => {
+                    if (cachedResponse) {
+                        return cachedResponse;
+                    }
+                    // If also not in cache (for navigation), return the offline page.
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('/index.html');
+                    }
+                    return;
+                });
+            })
     );
 });
 
-
-// Clean up old caches on activation
+// Clean up old caches on activation and take control of the page.
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
@@ -72,6 +76,6 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        }).then(() => self.clients.claim()) // Take control of all open clients
+        }).then(() => self.clients.claim()) // Take control of all open clients immediately.
     );
 });
