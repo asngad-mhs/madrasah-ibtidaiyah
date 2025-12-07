@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GoogleGenAI } from "@google/genai";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-// FIX: Add ClockIcon to imports from heroicons
 import { CalendarIcon, BellIcon, AcademicCapIcon, CheckBadgeIcon, ArrowLeftIcon, CalendarDaysIcon, MegaphoneIcon, ClipboardDocumentListIcon, ChevronDownIcon, CheckCircleIcon, XCircleIcon, XMarkIcon, CreditCardIcon, ClockIcon } from '@heroicons/react/24/solid';
 
 // ====================================================================================
@@ -848,6 +847,7 @@ const Timetable: React.FC<TimetableProps> = ({ scheduleData }) => {
     const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at"];
     
     const allTimes = scheduleData.flatMap(day => day.schedule.map(item => item.time));
+    // FIX: Explicitly type `uniqueTimes` as `string[]` to ensure correct type inference for sort callback parameters.
     const uniqueTimes: string[] = [...new Set(allTimes)].sort((a, b) => {
         const timeA = parseInt(a.split(':')[0], 10) * 60 + parseInt(a.split(/[:\s-]/)[1], 10);
         const timeB = parseInt(b.split(':')[0], 10) * 60 + parseInt(b.split(/[:\s-]/)[1], 10);
@@ -1553,15 +1553,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen antialiased bg-white dark:bg-gray-800 shadow-lg sm:max-w-4xl sm:mx-auto">
-      <div className="w-full h-screen flex flex-col">
-        <BottomNav currentView={currentView} setCurrentView={setCurrentView} />
-        <main className="flex-1 overflow-y-auto pt-20 pb-4">
-          {renderView()}
-        </main>
-      </div>
-      {installPrompt && <InstallPwaButton onClick={handleInstallClick} />}
+    <div className="min-h-screen antialiased bg-gray-100 dark:bg-gray-900 sm:max-w-4xl sm:mx-auto">
+        <div className="w-full min-h-screen flex flex-col bg-white dark:bg-gray-800 shadow-lg">
+            <BottomNav currentView={currentView} setCurrentView={setCurrentView} />
+            <main className="flex-1 overflow-y-auto pt-20 pb-4">
+            {renderView()}
+            </main>
+        </div>
+        {installPrompt && <InstallPwaButton onClick={handleInstallClick} />}
     </div>
+
   );
 };
 

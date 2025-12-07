@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'mi-ceria-app-v7'; // Bump version to ensure update
+const CACHE_NAME = 'mi-ceria-app-v8'; // Bump version to ensure update
 const urlsToCache = [
     '/',
     '/index.html',
@@ -13,6 +13,7 @@ const urlsToCache = [
 
 // Install the service worker and cache static assets
 self.addEventListener('install', (event) => {
+    self.skipWaiting(); // Force the new service worker to activate immediately
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Opened cache and caching static assets');
@@ -21,7 +22,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Serve cached content when offline with a network-first fallback strategy
+// Serve cached content when offline with a cache-first strategy
 self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (event.request.method !== 'GET') {
@@ -30,7 +31,8 @@ self.addEventListener('fetch', (event) => {
     
     // Do not cache API requests to Google
     if (event.request.url.includes('generativelanguage')) {
-        return;
+        // Fallback to network for API calls
+        return fetch(event.request);
     }
 
     event.respondWith(
@@ -42,13 +44,7 @@ self.addEventListener('fetch', (event) => {
 
             // Otherwise, fetch from the network.
             return fetch(event.request).then((networkResponse) => {
-                // If we get a valid response, clone it and cache it.
-                if (networkResponse && networkResponse.status === 200) {
-                    const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
-                }
+                // We don't cache on the fly for this strategy to keep it simple
                 return networkResponse;
             }).catch(() => {
                 // If the network request fails and it's a navigation request,
@@ -56,7 +52,6 @@ self.addEventListener('fetch', (event) => {
                 if (event.request.mode === 'navigate') {
                     return caches.match('/index.html');
                 }
-                // For other failed requests (like images), we don't need to do anything special.
                 return;
             });
         })
@@ -77,6 +72,6 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        })
+        }).then(() => self.clients.claim()) // Take control of all open clients
     );
 });

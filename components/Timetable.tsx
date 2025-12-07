@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { DaySchedule, ScheduleItem } from '../types.ts';
 
@@ -34,8 +33,7 @@ const Timetable: React.FC<TimetableProps> = ({ scheduleData }) => {
     const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at"];
     
     const allTimes = scheduleData.flatMap(day => day.schedule.map(item => item.time));
-    // Fix: Explicitly type `uniqueTimes` as `string[]`. This ensures `time` in the map function is a string,
-    // and also allows TypeScript to correctly infer the types for `a` and `b` in the sort function.
+    // FIX: Explicitly type `uniqueTimes` as `string[]` to ensure correct type inference for sort callback parameters.
     const uniqueTimes: string[] = [...new Set(allTimes)].sort((a, b) => {
         const timeA = parseInt(a.split(':')[0], 10) * 60 + parseInt(a.split(/[:\s-]/)[1], 10);
         const timeB = parseInt(b.split(':')[0], 10) * 60 + parseInt(b.split(/[:\s-]/)[1], 10);
